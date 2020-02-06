@@ -1,0 +1,80 @@
+<%- include('./partials/header') %>
+    <div class="breadcome-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="product-status-wrap">
+                        <h4>Payment History for User <%= muser.USERID%></h4>
+                        <table>
+                            <tr>
+                                <th>Payment Reference</th>
+                                <th>Payment Date</th>
+                                <th>USERID</th>
+                                <th>Payment Method</th>
+                                <th>Amount</th>
+                                <th>Payment Status Description</th>
+                                <th>Payment Status</th>
+                                <th>Re-Query Payment</th>
+                            </tr>
+                            <%if(uPay.length != 0){%>
+                                <% uPay.forEach(function(payh){ %>
+                                    <tr>
+                                        <td><%=payh.LONGTIME%></td>
+                                        <td><%=moment(payh.CREATEDATE).format( 'YYYY-MM-DD hh:mm:ss')%></td>
+                                        <td><%=payh.USERID%></td>
+                                        <td><%=payh.PaymentType%></td>
+                                        <td><%=payh.AMOUNT%></td>
+                                        <td><%=payh.EXTERNALERRORDESCRIPTION%></td>
+                                        <%if(payh.STATE == 1){%>
+                                            <td>Payment Successful</td>
+                                            <td></td>
+                                        <%}%>
+                                        <%if(payh.STATE == 2){%>
+                                            <td>Payment Failed</td>
+                                            <td>
+                                                <form action="/requery" method="post">
+                                                    <input name="txtid" type="hidden" value="<%=payh.LONGTIME%>"/>
+                                                    <input name="ptype" type="hidden" value="<%=payh.PaymentType%>"/>
+                                                    <button class="btn btn-danger">Re-Check</button>
+                                                </form>
+                                                
+                                            </td>
+                                        <%}%>
+                                        <%if(payh.STATE == 3){%>
+                                            <td>Pending</td>
+                                            <td>
+                                                <form action="/requery" method="post">
+                                                    <input name="txtid" type="hidden" value="<%=payh.LONGTIME%>"/>
+                                                    <input name="amount" type="hidden" value="<%=payh.AMOUNT*100%>"/>
+                                                    <input name="HASH" type="hidden" value="<%=payh.HASH%>"/>
+                                                    <input name="ptype" type="hidden" value="<%=payh.PaymentType%>"/>
+                                                    <button class="btn btn-danger">Re-Check</button>
+                                                </form>
+                                            </td>
+                                        <%}%>
+
+                                    </tr>
+                                <% }) %>   
+                            <%}else{%>
+                            </table>
+                                <h6 class="form-group" >No Record Found, Please select a date range like between 2019-12-01 and 2019-12-29</h6>
+
+                            <% }%> 
+                            
+                        </table>
+                        <div class="custom-pagination">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include('./partials/footer') %>

@@ -1,0 +1,317 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Dashboard V.2 | Nalika - Material Admin Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon
+		============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Google Fonts
+		============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+	<!-- nalika Icon CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/nalika-icon.css">
+    <!-- owl.carousel CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/owl.theme.css">
+    <link rel="stylesheet" href="css/owl.transitions.css">
+    <!-- animate CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- normalize CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- meanmenu icon CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/meanmenu.min.css">
+    <!-- main CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- morrisjs CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/morrisjs/morris.css">
+    <!-- mCustomScrollbar CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/scrollbar/jquery.mCustomScrollbar.min.css">
+    <!-- metisMenu CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/metisMenu/metisMenu.min.css">
+    <link rel="stylesheet" href="css/metisMenu/metisMenu-vertical.css">
+    <!-- calendar CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/calendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="css/calendar/fullcalendar.print.min.css">
+    <!-- style CSS
+		============================================ -->
+    <link rel="stylesheet" href="style.css">
+    <!-- responsive CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- modernizr JS
+		============================================ -->
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="left-sidebar-pro">
+        <nav id="sidebar" class="">
+            <div class="sidebar-header">
+                <a href="/"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                <strong><img src="img/logo/logosn.png" alt="" /></strong>
+            </div>
+			<div class="nalika-profile">
+				<div class="profile-dtl">
+                    <a href="#"><img src="img/notification/4.jpg" alt="" /></a>
+                    <h2> <%= muser.USERID %></h2>
+                    <h2> <%= muser.FIRSTNAME %></h2>
+                    <h2> <%= muser.LASTNAME %> </h2>
+
+				</div>
+				<div class="profile-social-dtl">
+					<ul class="dtl-social">
+						<li><a href="#"><i class="icon nalika-facebook"></i></a></li>
+						<li><a href="#"><i class="icon nalika-twitter"></i></a></li>
+						<li><a href="#"><i class="icon nalika-linkedin"></i></a></li>
+					</ul>
+				</div>
+			</div>
+            <div class="left-custom-menu-adp-wrap comment-scrollbar" >
+                <nav class="sidebar-nav left-sidebar-menu-pro">
+                    <ul class="metismenu" id="menu1">
+                        <li class="active">
+                            <a href="/">
+								   <i class="icon nalika-home icon-wrap"></i>
+								   <span class="mini-click-non">Dashboard</span>
+								</a>
+                        </li>
+                        <li>
+                            <a class="has-arrow" aria-expanded="false"><i class="icon nalika-diamond icon-wrap"></i> <span class="mini-click-non">Manage Profile</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Renew My Plan" href="/renew"><span class="mini-sub-pro">Renew My Plan</span></a></li>
+                                <li><a title="Change My Plan" href="/productswitch"><span class="mini-sub-pro">Change My Plan</span></a></li>
+                                <li><a title="Change Password" href="/changepassword"><span class="mini-sub-pro">Change Password</span></a></li>
+                                <li><a title="Manage My Speed" href="/managespeed"><span class="mini-sub-pro">Manage My Speed</span></a></li>
+                                <li><a title="Update Details" href="/updateuser"><span class="mini-sub-pro">Update Details</span></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/notification" aria-expanded="false"><i class="icon nalika-mail icon-wrap"></i> <span class="mini-click-non">Notification</span></a>
+
+                        </li>                        
+                        <li>
+                            <a class="has-arrow" aria-expanded="false"><i class="icon nalika-pie-chart icon-wrap"></i> <span class="mini-click-non">Account History</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Sessions History" href="/session"><span class="mini-sub-pro">Sessions History</span></a></li>
+                                <li><a title="Payment History" href="/paymenthist"><span class="mini-sub-pro">Payment History</span></a></li>
+                                <li><a title="Renewal History" href="/renewhist"><span class="mini-sub-pro">Renewal History</span></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" aria-expanded="false"><i class="icon nalika-bar-chart icon-wrap"></i> <span class="mini-click-non">Payments</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Make Payment" href="/makepayment"><span class="mini-sub-pro">Make Payment</span></a></li>
+                                <li><a title="View Payment Logs" href="/viewpayment"><span class="mini-sub-pro">View Payment Logs</span></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" aria-expanded="false"><i class="icon nalika-table icon-wrap"></i> <span class="mini-click-non">Support</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Feed Back" href="/feedback"><span class="mini-sub-pro">Feedback</span></a></li>
+                                <li><a title="FAQ" href="/faq"><span class="mini-sub-pro">FAQ</span></a></li>
+                                <li><a title="Contact Us" href="/contact"><span class="mini-sub-pro">Contact Us</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+    </div>
+    <!-- Start Welcome area -->
+    <div class="all-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="logo-pro">
+                        <a href="/"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-advance-area">
+            <div class="header-top-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="header-top-wraper">
+                                <div class="row">
+                                    <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
+                                        <div class="menu-switcher-pro">
+                                            <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+													<i class="icon nalika-menu-task"></i>
+												</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                                        <div class="header-right-info">
+                                            <ul class="nav navbar-nav mai-top-nav header-right-menu">
+                                                <li class="nav-item dropdown">
+                                                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="icon nalika-mail nalika-chat-pro" aria-hidden="true"></i><span class="indicator-ms"></span></a>
+                                                    <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
+                                                        <div class="message-single-top">
+                                                            <h1>Message</h1>
+                                                        </div>
+                                                        <ul class="message-menu">
+                                                            <li>
+                                                                <a href="#">
+                                                                    <div class="message-img">
+                                                                        <img src="img/contact/1.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="message-content">
+                                                                        <span class="message-date">16 Sept</span>
+                                                                        <h2>Advanda Cro</h2>
+                                                                        <p>Please done this project as soon possible.</p>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <div class="message-img">
+                                                                        <img src="img/contact/4.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="message-content">
+                                                                        <span class="message-date">16 Sept</span>
+                                                                        <h2>Sulaiman din</h2>
+                                                                        <p>Please done this project as soon possible.</p>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <div class="message-img">
+                                                                        <img src="img/contact/3.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="message-content">
+                                                                        <span class="message-date">16 Sept</span>
+                                                                        <h2>Victor Jara</h2>
+                                                                        <p>Please done this project as soon possible.</p>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <div class="message-img">
+                                                                        <img src="img/contact/2.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="message-content">
+                                                                        <span class="message-date">16 Sept</span>
+                                                                        <h2>Victor Jara</h2>
+                                                                        <p>Please done this project as soon possible.</p>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="message-view">
+                                                            <a href="#">View All Messages</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+															<i class="icon nalika-user nalika-user-rounded header-riht-inf" aria-hidden="true"></i>
+										    					<span class="admin-name"><%= muser.FIRSTNAME %> <%= muser.LASTNAME %></span>
+															<i class="icon nalika-down-arrow nalika-angle-dw nalika-icon"></i>
+														</a>
+                                                    <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                                                        <li><a href="/changepassword"><span class="icon nalika-user author-log-ic"></span> Change Password</a>
+                                                        </li>
+                                                        <li><a href="/logout"><span class="icon nalika-unlocked author-log-ic"></span> Log Out</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Menu start -->
+            <div class="mobile-menu-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="mobile-menu">
+                                <nav id="dropdown">
+                                    <ul class="mobile-menu-nav">
+                                        <li><a data-toggle="collapse" data-target="#Dashboard" href="/">Dashboard <span class="admin-project-icon nalika-icon"></span></a>
+                                        </li>
+                                        <li><a data-toggle="collapse" data-target="#Manage" href="#">Manage Profile <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
+                                            <ul id="demo" class="collapse dropdown-header-top">
+                                                <li><a href="/renew">Renew My Plan</a>
+                                                </li>
+                                                <li><a href="/productswitch">Change My Plan</a>
+                                                </li>
+                                                <li><a href="/changepassword">Change Password</a>
+                                                </li>
+                                                <li><a href="/managespeed">Manage My Speed</a>
+                                                </li>
+                                                <li><a href="/updateuser">Update Details</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a data-toggle="collapse" data-target="#not" href="/notification">Notification <span class="admin-project-icon nalika-icon"></span></a>
+                                        </li>
+                                        <li><a data-toggle="collapse" data-target="#hist" href="#">Account History<span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
+                                            <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
+                                                <li><a href="/session">Sessions History</a>
+                                                </li>
+                                                <li><a href="/paymenthist">Payment History</a>
+                                                </li>
+                                                <li><a href="/renewhist">Renewal History</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a data-toggle="collapse" data-target="#payment" href="#">Payment <span class="admin-project-icon nalika-icon"></span></a>
+                                            <ul id="Tablesmob" class="collapse dropdown-header-top">
+                                                <li><a href="/makepayment">Make Payment</a>
+                                                </li>
+                                                <li><a href="/viewpayment">View Payment Logs</a>
+                                                </li>                                                
+                                            </ul>
+                                        </li>
+                                        <li><a data-toggle="collapse" data-target="#sup" href="#">Support <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
+                                            <ul id="Tablesmob" class="collapse dropdown-header-top">
+                                                <li><a href="/feedback">Feedback</a>
+                                                </li>
+                                                <li><a href="/faq">FAQ</a>
+                                                </li>                                                
+                                                <li><a href="/contact">Contact Us</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

@@ -1,0 +1,59 @@
+<%- include('./partials/header') %>
+    <div class="breadcome-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="product-status-wrap">
+                        <h4>Data Usage History for User <%= muser.USERID %></h4>
+                        <form class="form-inline" action="/session" method="post">
+                            <label class="sr-only" for="startdate">Start Date</label>
+                            <input type="date" class="form-control mb-2 mr-sm-2" id="startdate" name="startdate" placeholder="Start Date" value="<%=st%>">
+
+                            <label class="sr-only" for="enddate">End Date</label>
+                            <input type="date" class="form-control mb-2 mr-sm-2" id="enddate"name="enddate" placeholder="End Date" value="<%=et%>">                                  
+                          
+                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                        </form>
+                        <table>
+                            <tr>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>USERID</th>
+                                <th>IMSI</th>
+                                <th>IP Address</th>
+                                <th>MB Used</th>
+                            </tr>
+                            <%if(uSes.status != 99){%>
+                                <% uSes.forEach(function(sess){ %>
+                                    <tr>
+                                        <td><%=moment(sess.StartDate).format( 'YYYY-MM-DD hh:mm:ss')%></td>
+                                        <td><%=moment(sess.EndDate).format( 'YYYY-MM-DD hh:mm:ss')%></td>
+                                        <td><%=sess.USERID%></td>
+                                        <td><%=sess.IMSI%></td>
+                                        <td><%=sess.IP%></td>
+                                        <td><%=sess.MBUsed%></td>
+                                    </tr>
+                                <% }) %>   
+                            <%}else{%>
+                            </table>
+                                <h6 class="form-group" >No Record Found, Please select a date range like between 2019-12-01 and 2019-12-29</h6>
+
+                            <% }%> 
+                            
+                        </table>
+                        <div class="custom-pagination">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include('./partials/footer') %>

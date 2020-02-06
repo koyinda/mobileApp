@@ -1,0 +1,66 @@
+<%- include('./partials/header') %>
+<div class="breadcome-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcome-list">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="breadcomb-wp">
+                                <div class="breadcomb-icon">
+                                    <i class="icon nalika-home"></i>
+                                </div>
+                                <div class="breadcomb-ctn">
+                                    <h2>Payment</h2>
+                                    <p>Make Paystack Payment into User <%= muser.USERID%></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-status-wrap">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="review-tab-pro-inner">
+                        <ul id="myTab3" class="tab-review-design">
+                            <li class="active"><a href="#description"><i class="icon nalika-edit" aria-hidden="true"></i> Payment Details</a></li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content custom-product-edit">
+                            <div class="product-tab-list tab-pane fade active in" id="description">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <div class="text-center custom-pro-edt-ds">
+
+                                            <form action="/gatewaysubmit" method="post">
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" placeholder="User ID" name="custID"   value="<%= muser.USERID %>" readonly>
+                                                </div>
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
+                                                    <input type="number" class="form-control" placeholder="Amount" name="amount" min="100" max="1000000" required>
+                                                </div>
+                                                <input type="hidden" id="paymenttype" name="pType" value="paystack">
+                                                <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Proceed</button>
+                                            </form>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('./partials/footer') %>

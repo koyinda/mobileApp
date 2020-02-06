@@ -1,0 +1,41 @@
+<%- include('./partials/header') %>
+<div class="breadcome-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcome-list">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="breadcomb-wp">
+                                <div class="breadcomb-icon">
+                                    <i class="icon nalika-home"></i>
+                                </div>
+                                <div class="breadcomb-ctn">
+                                    <h2>Subscription Activation</h2>
+                                    <p>Renew My Plan <%= muser.USERID %></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hpanel">
+    <div class="panel-body">
+        <form action="/renew" method="post">
+            <label><h3><%= muser.AUTOREGACCOUNTNAME %></h3></label>
+            <label><h3><%=muser.DESCRIPTION%></h3></label>                    
+            <input type="hidden" id="paymenttype" name="userid" value="<%= muser.USERID %>">
+            <input type="hidden" id="paymenttype" name="newproduct" value="<%= muser.PRODUCTINDEX %>">
+            <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Proceed</button>
+            <a href="/makepayment"><button class="btn btn-success">Change Plan</button></a>
+            <a href="/"><button class="btn btn-success">Go Home</button></a>
+        </form>
+
+    </div>
+</div>
+                    
+<%- include('./partials/footer') %>

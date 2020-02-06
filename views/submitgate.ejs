@@ -1,0 +1,96 @@
+<%- include('./partials/header') %>
+<div class="breadcome-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcome-list">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="breadcomb-wp">
+                                <div class="breadcomb-icon">
+                                    <i class="icon nalika-home"></i>
+                                </div>
+                                <div class="breadcomb-ctn">
+                                    <h2>Payment</h2>
+                                    <p>Make Interswitch Payment into User <%= muser.USERID %></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-status-wrap">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="review-tab-pro-inner">
+                        <ul id="myTab3" class="tab-review-design">
+                            <li class="active"><a href="#description"><i class="icon nalika-edit" aria-hidden="true"></i> Payment Details</a></li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content custom-product-edit">
+                            <div class="product-tab-list tab-pane fade active in" id="description">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <div class="text-center custom-pro-edt-ds">
+                                            <%if(keyVal[8] == "Interswitch"){%>
+                                            <form class="text-centre"action="https://sandbox.interswitchng.com/collections/w/pay" method="post">
+                                                <input name="product_id" type="hidden" value="<%=keyVal[3]%>"/>
+                                                <input name="pay_item_id" type="hidden" value="<%=keyVal[4]%>"/>
+                                                <div class="form-group row">
+                                                    <label for="staticAmount" class="col-sm-2 col-form-label">Amount</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" readonly class="form-control-plaintext" name="realamount" id="staticAmount" value="<%=keyVal[1]%>">
+                                                    </div>
+                                                </div>
+                                                <input name="amount" type="hidden" value="<%=keyVal[1]*100%>"/>
+                                                <input name="currency" type="hidden" value="<%=keyVal[5]%>"/>
+                                                <input name="site_redirect_url" type="hidden" value="<%=keyVal[6]%>"/>
+                                                <div class="form-group row">
+                                                    <label for="staticTxid" class="col-sm-2 col-form-label">Transaction ID</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" readonly class="form-control-plaintext" id="staticTxid" name="txn_ref" value="<%=keyVal[0]%>">
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="hash" value="<%=keyVal[7]%>"/>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+
+                                            </form>
+                                            <%}else{%>                                            
+                                                <form class="text-centre"action="/paystackredirect" method="post">
+                                                    <input name="callback_url" type="hidden" value="<%=keyVal[6]%>"/>
+                                                    <div class="form-group row">
+                                                        <label for="staticTxid" class="col-sm-2 col-form-label">Transaction ID</label>
+                                                        <div class="col-sm-10">
+                                                          <input type="text" readonly class="form-control-plaintext" id="staticTxid" name="reference" value="<%=keyVal[0]%>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="staticAmount" class="col-sm-2 col-form-label">Amount</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" readonly class="form-control-plaintext" name="realamount" id="staticAmount" value="<%=keyVal[1]%>">
+                                                        </div>
+                                                    </div>
+                                                    <input name="amount" type="hidden" value="<%=keyVal[1]*100%>"/>
+                                                    <input name="email" type="hidden" value="<%=lUser[3]%>"/>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                                                </form> 
+                                            <% }%>   
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('./partials/footer') %>

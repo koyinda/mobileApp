@@ -1,0 +1,183 @@
+<%- include('./partials/header') %>
+            <!-- Mobile Menu end -->
+            <div class="breadcome-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="breadcome-list">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-admin container-fluid res-mg-t-15">
+            <div class="row admin text-center">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="admin-content analysis-progrebar-ctn">
+                                <h4 class="text-left text-uppercase"><b>Plan Name</b></h4>
+                                <div class="row vertical-center-box vertical-center-box-tablet">
+                                    <div class="col-xs cus-gh-hd-pro">
+                                        <h2 class="text-center no-margin"><%= cUser[0].AUTOREGACCOUNTNAME%></h2>
+                                    </div>
+                                </div>
+                                <div class="progress progress-mini">
+                                    <div style="width: 100%;" class="progress-bar bg-green"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="margin-bottom:1px;">
+                            <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
+                                <h4 class="text-left text-uppercase"><b>Expiry Date</b></h4>
+                                <div class="row vertical-center-box vertical-center-box-tablet">
+                                    <div class="text-left col-xs-3 mar-bot-15">
+                                        <label class="label bg-red">
+                                            <% if(cUser[0].USERACTIVE == 1){%>
+                                                <%=cUser[0].NUMOFDAYS%>
+                                            <% }else{%>
+                                                Expired
+                                            <%}%>
+                                        <i class="fa fa-level-down" aria-hidden="true"></i></label>
+                                    </div>
+                                    <div class="col-xs-9 cus-gh-hd-pro">
+                                        <h2 class="text-right no-margin"><%=moment(cUser[0].USEREXPIRYDATE).format( 'DD-MMM-YYYY')%></h2>
+                                    </div>
+                                </div>
+                                <div class="progress progress-mini">
+                                    <% if(cUser[0].USERACTIVE == 1){%>
+                                        <div style="width: <%= ((moment(cUser[0].USEREXPIRYDATE).diff(moment(),'days'))/cUser[0].NUMOFDAYS)*100 %>%;" class="progress-bar progress-bar-danger bg-red"></div>
+                                    <% }else{%>
+                                        <div style="width: 0%;" class="progress-bar progress-bar-danger bg-red"></div>
+                                    <%}%>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
+                                <h4 class="text-left text-uppercase"><b>Account Status</b></h4>
+                                <div class="row vertical-center-box vertical-center-box-tablet">
+                                    <div class="col-xs-9 cus-gh-hd-pro">
+                                        <h2 class="text-right no-margin">
+                                            <% if(cUser[0].USERACTIVE == 1){%>
+                                                ACTIVE
+                                            <% }else{%>
+                                                INACTIVE
+                                            <%}%>                                            
+
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="progress progress-mini">
+                                    <div style="width: 100%;" class="progress-bar bg-blue"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
+                                <h4 class="text-left text-uppercase"><b>Balance</b></h4>
+                                <div class="row vertical-center-box vertical-center-box-tablet">
+                                    <div class="col-xs-9 cus-gh-hd-pro">
+                                        <h2 class="text-right no-margin"><%= cUser[0].USERPAYMENTBALANCE %></h2>
+                                    </div>
+                                </div>
+                                <div class="progress progress-mini">
+                                    <div style="width: 100%;" class="progress-bar bg-purple"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-sales-area mg-tb-30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="product-sales-chart">
+                            <div class="portlet-title">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="caption pro-sl-hd">
+                                            <span class="caption-subject text-uppercase"><b>Bank Details</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="actions graph-rp">
+                                            <div class="btn-group" data-toggle="buttons">
+                                                <label class="btn btn-red active" id="cOption1">
+                                                    <input type="radio" name="options" class="toggle" id="option1" >Paid Data
+                                                </label>
+                                                <label class="btn btn-grey" id="cOption2">
+                                                    <input type="radio" name="options" class="toggle" id="option2" >Free Data
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            var pBank = document.getElementById("cOption1");
+            pBank.addEventListener( "click",  pChartTypeChanged);
+
+            var fBank = document.getElementById("cOption2");
+            fBank.addEventListener( "click",  fChartTypeChanged);        
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                backgroundColor: "#1b2a47",
+                legend:{
+                    itemclick: explodePie,
+                    fontColor: "white"
+                },
+                data: [{
+                    //chart.options.data[0].dataPoints[0] ={ y: 1, name: "Used" }
+                    type: "pie",
+                    showInLegend: true,
+                    indexLabelFontColor: "white",
+                    toolTipContent: "{name}: <strong>{y}GB</strong>",
+                    indexLabel: "{name}: {y}GB",
+                    dataPoints: [
+                        { y: (('<%= JSON.stringify(pbank[0].ACCUMULATEDUSAGE) %>')/(1024*1024*1024)), name: "Used" },
+                        { y: (('<%= JSON.stringify(pbank[0].BALANCE) %>')/(1024*1024*1024)), name: "Available"}
+                    ]
+                }]
+            });
+            chart.render();
+        
+            function explodePie (e) {
+                if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+                    e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+                } else {
+                    e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+                }
+                e.chart.render();
+            
+            }
+        
+            function pChartTypeChanged() {
+                
+                chart.options.data[0].dataPoints[1] ={ y: (('<%= JSON.stringify(pbank[0].BALANCE) %>')/(1024*1024*1024)), name: "Available"};
+                chart.options.data[0].dataPoints[0] ={ y: (('<%= JSON.stringify(pbank[0].ACCUMULATEDUSAGE) %>')/(1024*1024*1024)), name: "Used" } ;
+                chart.render();
+            }
+
+            function fChartTypeChanged() {
+                
+                chart.options.data[0].dataPoints[1] ={ y: (('<%= JSON.stringify(fbank[0].BALANCE) %>')/(1024*1024*1024)), name: "Available"};
+                chart.options.data[0].dataPoints[0] ={ y: (('<%= JSON.stringify(fbank[0].ACCUMULATEDUSAGE) %>')/(1024*1024*1024)), name: "Used" } ;
+                chart.render();
+            }    
+        }        
+    </script>
+<%- include('./partials/footer') %>

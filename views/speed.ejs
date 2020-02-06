@@ -1,0 +1,170 @@
+<%- include('./partials/header') %>
+            <div class="breadcome-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="breadcome-list">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-sales-area mg-tb-30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="product-sales-chart">
+                            <div class="portlet-title">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="caption pro-sl-hd">
+                                            <span class="caption-subject text-uppercase"><b>Manage My Speed for User <%= muser.USERID%></b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chartjs-wrapper">
+                                <canvas class="chartjs-gauge"></canvas>
+                            </div>
+                            <div class="btn-group">
+                                <form class="actions graph-rp" action="/speed" method="post">
+                                    <div class="radio-toolbar">
+                                        <input type="radio" id="radio1" name="speedradio" value="1">
+                                        <label for="radio1">1 MBPS</label>
+
+                                        <input type="radio" id="radio2" name="speedradio" value="2">
+                                        <label for="radio2">2 MBPS</label>
+
+                                        <input type="radio" id="radio3" name="speedradio" value="3">
+                                        <label for="radio3">3 MBPS</label>
+                                        
+                                        <input type="radio" id="radio4" name="speedradio" value="4">
+                                        <label for="radio4">4 MBPS</label>
+
+                                        <input type="radio" id="radio5" name="speedradio" value="5">
+                                        <label for="radio5">5 MBPS</label>
+
+                                        <input type="radio" id="radio6" name="speedradio" value="6">
+                                        <label for="radio6">6 MBPS</label>
+
+                                        <input type="radio" id="radio7" name="speedradio" value="7">
+                                        <label for="radio7">7 MBPS</label>
+
+                                        <input type="radio" id="radio8" name="speedradio" value="8">
+                                        <label for="radio8">8 MBPS</label>
+
+                                        <input type="radio" id="radio9" name="speedradio" value="0">
+                                        <label for="radio9">Unlimited</label>
+                                    </div>                                    
+                                    <button class="btn btn-primary btn-block">Submit</button>
+                                </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            window.onload = function () {
+
+                var i =0;
+                if('<%= JSON.stringify(speed[0].speed) %>'==0)
+                {
+                    i=9
+                }else{
+                    i='<%= JSON.stringify(speed[0].speed) %>'
+                }
+
+                var ctx = document.getElementsByClassName("chartjs-gauge");
+                var chart = new Chart(ctx, {
+                    type:"doughnut",
+                    data: {
+                        labels : ["Red","Blue"],
+                        datasets: [{
+                            label: "Gauge",
+                            data : [0, 9],
+                            backgroundColor: [
+                                "rgb(255, 99, 132)",
+                                "rgb(54, 162, 235)",
+                                "rgb(255, 205, 86)"
+                            ]
+                        }]
+                    },
+                    options: {
+                        circumference: Math.PI,
+                        rotation : Math.PI,
+                        cutoutPercentage : 80, // precent
+                        plugins: {
+                                    datalabels: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                                        borderColor: '#ffffff',
+                            color: function(context) {
+                                            return context.dataset.backgroundColor;
+                                        },
+                                        font: function(context) {
+                                var w = context.chart.width;
+                                return {
+                                size: w < 512 ? 18 : 20
+                                }
+                            },
+                            align: 'start',
+                            anchor: 'start',
+                            offset: 10,
+                                        borderRadius: 4,
+                                        borderWidth: 1,
+                            formatter: function(value, context) {
+                                            var i = context.dataIndex;
+                                var len = context.dataset.data.length - 1;
+                                if(i == len){
+                                    return null;
+                                }
+                                if(value == 9){
+                                    return "Your current speed is Unlimited";
+                                }
+                                    return 'Your current speed is '+value+' MBPS';
+                                }
+                            }
+                        },
+                        legend: {
+                            display: false
+                        },
+                        tooltips: {
+                            enabled: false
+                        }
+                    }
+                });
+
+
+                // DEMO Code: not relevant to example
+                function change_gauge(chart, label, data){
+                chart.data.datasets.forEach((dataset) => {
+                    if(dataset.label == label){
+                    dataset.data = data;
+                    }  
+                });
+                chart.update();
+                }
+
+                var accelerating = false;
+                function accelerate(){
+                accelerating = false;
+                window.setTimeout(function(){
+                    change_gauge(chart,"Gauge",[i,9-i])
+                }, 1000);
+
+                }
+
+                // Start sequence
+                accelerate();
+                window.setInterval(function(){
+                if(!accelerating){
+                    acelerating = true;
+                    accelerate();
+                }
+                }, 6000); 
+            }
+        </script>
+    <%- include('./partials/footer') %>
